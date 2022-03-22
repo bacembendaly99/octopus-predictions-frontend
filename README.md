@@ -1,4 +1,6 @@
-# OctopusPredictionsFrontend
+# OctopusPredictionsFrontend 🐙🐙
+
+Octopus Predcitions is a Website where you can find the best predictions for sports results 🧾
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
 
