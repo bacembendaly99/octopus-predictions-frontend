@@ -34,8 +34,18 @@
                                   </span>
                                 </div>
 
-                                <input type="email" class="form-control" placeholder="Email" >
+                                <input type="email" class="form-control" placeholder="Email" formControlName="email"
+                                       [attr.aria-invalid]="registerForm.controls.email.invalid && registerForm.controls.email.touched ? true : null"
+                                >
                             </div>
+                            <ng-container *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched">
+                                <p class="error-message" *ngIf="registerForm.controls.email.errors?.required">
+                                    Email is required!
+                                </p>
+                                <p class="error-message" *ngIf="registerForm.controls.email.errors?.pattern">
+                                    Email should be the real one!
+                                </p>
+                            </ng-container>
                             <label>Phone Number</label>
                             <div class="input-group form-group-no-border" >
                                 <div class="input-group-prepend">
