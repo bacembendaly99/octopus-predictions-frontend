@@ -1,0 +1,81 @@
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('./assets/img/login-image.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                    <div class="card card-register">
+                        <h3 class="title">Welcome</h3>
+
+                        <form class="register-form" [formGroup]="registerForm">
+                            <label>Username</label>
+                            <div class="input-group form-group-no-border" >
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-single-02"></i>
+                                  </span>
+                                </div>
+
+                                <input type="text" class="form-control" placeholder="Username" formControlName="userName"
+                                       [attr.aria-invalid]="registerForm.controls.userName.invalid && registerForm.controls.userName.touched ? true : null">
+
+
+                            </div>
+                            <ng-container *ngIf="registerForm.controls.userName.invalid && registerForm.controls.userName.touched">
+                                <p class="error-message" *ngIf="registerForm.controls.userName.errors?.required">
+                                    First name is required!
+                                </p>
+                            </ng-container>
+                            <label>Email</label>
+                            <div class="input-group form-group-no-border" >
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-email-85"></i>
+                                  </span>
+                                </div>
+
+                                <input type="email" class="form-control" placeholder="Email" >
+                            </div>
+                            <label>Phone Number</label>
+                            <div class="input-group form-group-no-border" >
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-mobile"></i>
+                                  </span>
+                                </div>
+
+                                <input type="text" class="form-control" placeholder="Phone Number" >
+                            </div>
+
+                            <label>Password</label>
+                            <div class="input-group form-group-no-border" >
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-key-25"></i>
+                                  </span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Password" >
+                            </div>
+                            <label>Confirm Password</label>
+                            <div class="input-group form-group-no-border" >
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-key-25"></i>
+                                  </span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Confirm Password" >
+                            </div>
+                            <button class="btn btn-danger btn-block btn-round">Register</button>
+                        </form>
+                        <div class="forgot">
+                            <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer register-footer text-center">
+                <h6>&copy;2022, made with <i class="fa fa-heart heart"></i> by Creative Tim</h6>
+            </div>
+        </div>
+    </div>
+</div>

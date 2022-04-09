@@ -4,16 +4,16 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ComponentsComponent } from './components/components.component';
-import { ProfileComponent } from './examples/profile/profile.component';
-import { SignupComponent } from './examples/signup/signup.component';
+
 import { LandingComponent } from './components/landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
+import {RegisterComponent} from './components/register/register.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'register', pathMatch: 'full' },
     { path: 'home',             component: ComponentsComponent },
-    { path: 'user-profile',     component: ProfileComponent },
-    { path: 'signup',           component: SignupComponent },
+    // { path: 'profile',     component: ProfileComponent },
+    { path: 'register',           component: RegisterComponent },
     { path: 'landing',          component: LandingComponent },
     { path: 'nucleoicons',      component: NucleoiconsComponent }
 ];
