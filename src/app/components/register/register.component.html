@@ -23,7 +23,7 @@
                             </div>
                             <ng-container *ngIf="registerForm.controls.userName.invalid && registerForm.controls.userName.touched">
                                 <p class="error-message" *ngIf="registerForm.controls.userName.errors?.required">
-                                    First name is required!
+                                    Username is required!
                                 </p>
                             </ng-container>
                             <label>Email</label>
@@ -43,7 +43,7 @@
                                     Email is required!
                                 </p>
                                 <p class="error-message" *ngIf="registerForm.controls.email.errors?.pattern">
-                                    Email should be the real one!
+                                    Email should be valid!
                                 </p>
                             </ng-container>
                             <label>Phone Number</label>
@@ -54,9 +54,17 @@
                                   </span>
                                 </div>
 
-                                <input type="text" class="form-control" placeholder="Phone Number" >
+                                <input type="text" class="form-control" placeholder="Phone Number" formControlName="phoneNumber"
+                                       [attr.aria-invalid]="registerForm.controls.phoneNumber.invalid && registerForm.controls.phoneNumber.touched ? true : null">
                             </div>
-
+                            <ng-container *ngIf="registerForm.controls.phoneNumber.invalid && registerForm.controls.phoneNumber.touched">
+                                <p class="error-message" *ngIf="registerForm.controls.phoneNumber.errors?.required">
+                                    Phone Number is required!
+                                </p>
+                                <p class="error-message" *ngIf="registerForm.controls.phoneNumber.errors?.pattern">
+                                    Phone Number should contain 8 digits
+                                </p>
+                            </ng-container>
                             <label>Password</label>
                             <div class="input-group form-group-no-border" >
                                 <div class="input-group-prepend">
@@ -64,8 +72,14 @@
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="Password" >
+                                <input type="password" class="form-control" placeholder="Password" formControlName="password"
+                                       [attr.aria-invalid]="registerForm.controls.password.invalid && registerForm.controls.password.touched ? true : null">
                             </div>
+                            <ng-container *ngIf="registerForm.controls.phoneNumber.invalid && registerForm.controls.phoneNumber.touched">
+                                <p class="error-message" *ngIf="registerForm.controls.password.errors?.required">
+                                    Password is required!
+                                </p>
+                            </ng-container>
                             <label>Confirm Password</label>
                             <div class="input-group form-group-no-border" >
                                 <div class="input-group-prepend">
@@ -73,8 +87,14 @@
                                       <i class="nc-icon nc-key-25"></i>
                                   </span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Confirm Password" >
+                                <input type="password" class="form-control" placeholder="Confirm Password" formControlName="repeatPassword"
+                                       [attr.aria-invalid]="registerForm.controls.repeatPassword.invalid && registerForm.controls.repeatPassword.touched ? true : null">
                             </div>
+                            <ng-container *ngIf="registerForm.controls.phoneNumber.invalid && registerForm.controls.phoneNumber.touched">
+                                <p class="error-message" *ngIf="registerForm.hasError('passwordsNotMatching')">
+                                    Password don't match!
+                                </p>
+                            </ng-container>
                             <button class="btn btn-danger btn-block btn-round">Register</button>
                         </form>
                         <div class="forgot">
