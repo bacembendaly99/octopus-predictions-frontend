@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {UserRegister} from '../../dto/userRegiter.interface';
+import {UserRegister} from '../../dto/userRegister.interface';
 import {Observable} from 'rxjs';
 
-const AuthUrl = 'http://localhost:8443/auth/';
+const AuthUrl = 'http://localhost:3000/auth/';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   isLogin = false;
   constructor(private http: HttpClient) { }
-// login(data: UserRegister) {
-//     // return this.http.post<any>(AuthUrl + 'signup' , data)
-// }
+register(data: UserRegister) {
+     return this.http.post<any>(AuthUrl + 'signup' , data)
+}
 }

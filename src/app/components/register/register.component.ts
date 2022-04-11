@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PasswordValidator} from '../../shared/validators/passwordValidator';
 import {AuthService} from '../../shared/services/auth/auth.service';
+import {UserRegister} from '../../shared/dto/userRegister.interface';
 
 @Component({
   selector: 'app-register',
@@ -11,9 +12,10 @@ import {AuthService} from '../../shared/services/auth/auth.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  user: UserRegister;
 
   constructor(
-      private formBuilder: FormBuilder,
+      private formBuilder: FormBuilder, private authService: AuthService
   ) {
   }
 
@@ -39,4 +41,22 @@ export class RegisterComponent implements OnInit {
         validators: PasswordValidator.passwordsMatch,
       });
     }
+
+  register() {
+    const user: UserRegister =
+        new UserRegister(
+            this.registerForm.value.email,
+            this.registerForm.value.userName,
+            this.registerForm.value.mobileNumber,
+            this.registerForm.value.email);
+
+    this.authService.register(user).subscribe(
+        data => {
+          console.log(data)
+        },
+        error => {
+          console.log('error : ', error);
+  })
+}
+
 }

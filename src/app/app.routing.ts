@@ -8,11 +8,12 @@ import { ComponentsComponent } from './components/components.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import {RegisterComponent} from './components/register/register.component';
+import {TeamComponent} from './components/team/team.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'register', pathMatch: 'full' },
     { path: 'home',             component: ComponentsComponent },
-    // { path: 'profile',     component: ProfileComponent },
+    { path: 'team',     component: TeamComponent  },
     { path: 'register',           component: RegisterComponent },
     { path: 'landing',          component: LandingComponent },
     { path: 'nucleoicons',      component: NucleoiconsComponent }
