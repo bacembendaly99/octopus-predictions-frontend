@@ -75,7 +75,7 @@
                                 <input type="password" class="form-control" placeholder="Password" formControlName="password"
                                        [attr.aria-invalid]="registerForm.controls.password.invalid && registerForm.controls.password.touched ? true : null">
                             </div>
-                            <ng-container *ngIf="registerForm.controls.phoneNumber.invalid && registerForm.controls.phoneNumber.touched">
+                            <ng-container *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched">
                                 <p class="error-message" *ngIf="registerForm.controls.password.errors?.required">
                                     Password is required!
                                 </p>
@@ -90,12 +90,12 @@
                                 <input type="password" class="form-control" placeholder="Confirm Password" formControlName="repeatPassword"
                                        [attr.aria-invalid]="registerForm.controls.repeatPassword.invalid && registerForm.controls.repeatPassword.touched ? true : null">
                             </div>
-                            <ng-container *ngIf="registerForm.controls.phoneNumber.invalid && registerForm.controls.phoneNumber.touched">
+                            <ng-container *ngIf="registerForm.controls.repeatPassword.invalid && registerForm.controls.repeatPassword.touched">
                                 <p class="error-message" *ngIf="registerForm.hasError('passwordsNotMatching')">
                                     Password don't match!
                                 </p>
                             </ng-container>
-                            <button class="btn btn-danger btn-block btn-round" (click)="register()"  >Register</button>
+                            <button class="btn btn-danger btn-block btn-round" (click)="register()"  [disabled]="registerForm.invalid">Register</button>
                         </form>
                         <div class="forgot">
                             <a href="#" class="btn btn-link btn-danger">Forgot password?</a>

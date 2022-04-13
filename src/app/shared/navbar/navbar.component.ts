@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {Router} from '@angular/router';
+import {AuthService} from '../services/auth/auth.service';
 
 @Component({
     selector: 'app-navbar',
@@ -9,14 +11,18 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
+     loggedin: boolean;
 
-    constructor(public location: Location, private element : ElementRef) {
+    constructor(public location: Location, private element: ElementRef, private router: Router, private authService: AuthService) {
         this.sidebarVisible = false;
     }
 
-    ngOnInit() {
+    async ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+        await this.authService.isLogged();
+        console.log('islogged call finished');
+        this.loggedin = this.authService.isLogin;
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
@@ -47,28 +53,29 @@ export class NavbarComponent implements OnInit {
             this.sidebarClose();
         }
     };
-    isHome() {
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 1 );
-      }
-        if( titlee === '/home' ) {
+    isLanding() {
+      // const titlee = this.location.prepareExternalUrl(this.location.path());
+      // if(titlee.charAt(0) === '#'){
+      //     titlee = titlee.slice( 1 );
+      // }
+        if ( this.router.url === '/landing' ) {
+            // console.log('landing detected')
             return true;
         }
         else {
             return false;
         }
     }
-    isDocumentation() {
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
-          titlee = titlee.slice( 1 );
-      }
-        if( titlee === '/documentation' ) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+    // isDocumentation() {
+    //   var titlee = this.location.prepareExternalUrl(this.location.path());
+    //   if(titlee.charAt(0) === '#'){
+    //       titlee = titlee.slice( 1 );
+    //   }
+    //     if( titlee === '/documentation' ) {
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
 }

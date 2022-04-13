@@ -3,7 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {UserRegister} from '../../dto/userRegister.interface';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
-import {error} from 'protractor';
+import {error, promise} from 'protractor';
+import {waitForAsync} from '@angular/core/testing';
 
 // const AuthUrl = 'http://localhost:3000/auth/';
 @Injectable({
@@ -19,13 +20,19 @@ register(data: UserRegister) {
 whomai() {
       return this.http.get(environment.API_BASE + 'auth/whoami')
 }
-isLogged(): void {
-this.whomai().subscribe(
+
+async  isLogged(): Promise<any> {
+      console.log('islogged func started')
+   this.whomai().subscribe(
     data => {
-        console.log(data);
+        console.log(data)
+        this.isLogin = true;
+        console.log('islogged updated true')
     },
      err => {console.log(err);
-
+        this.isLogin = false;
     })
+
+
 }
 }

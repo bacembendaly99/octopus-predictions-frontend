@@ -1,0 +1,59 @@
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('./assets/img/login-image.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                    <div class="card card-register">
+                        <h3 class="title">Welcome</h3>
+
+                        <form class="register-form" [formGroup]="loginForm">
+
+
+                            <label>Username</label>
+                            <div class="input-group form-group-no-border" >
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-single-02"></i>
+                                  </span>
+                                </div>
+
+                                <input type="text" class="form-control" placeholder="Username" formControlName="userName"
+                                       [attr.aria-invalid]="loginForm.controls.userName.invalid && loginForm.controls.userName.touched ? true : null">
+
+
+                            </div>
+                            <ng-container *ngIf="loginForm.controls.userName.invalid && loginForm.controls.userName.touched">
+                                <p class="error-message" *ngIf="loginForm.controls.userName.errors?.required">
+                                    Username is required!
+                                </p>
+                            </ng-container>
+                            <label>Password</label>
+                            <div class="input-group form-group-no-border" >
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <i class="nc-icon nc-key-25"></i>
+                                  </span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Password" formControlName="password"
+                                       [attr.aria-invalid]="loginForm.controls.password.invalid && loginForm.controls.password.touched ? true : null">
+                            </div>
+                            <ng-container *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
+                                <p class="error-message" *ngIf="loginForm.controls.password.errors?.required">
+                                    Password is required!
+                                </p>
+                            </ng-container>
+                            <button class="btn btn-danger btn-block btn-round" [disabled]="loginForm.invalid" (click)="login()">Log in</button>
+                        </form>
+                        <div class="forgot">
+                            <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer register-footer text-center">
+                <h6>&copy;2022, made with <i class="fa fa-heart heart"></i> by Creative Tim</h6>
+            </div>
+        </div>
+    </div>
+</div>

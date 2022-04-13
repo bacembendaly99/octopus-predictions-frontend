@@ -56,8 +56,6 @@ export class RegisterComponent implements OnInit {
           // console.log(data)
           localStorage.setItem('access_token', data.accessToken);
           this.router.navigate(['home'])
-
-
         },
         error => {
           console.log('error : ', error);
