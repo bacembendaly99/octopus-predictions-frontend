@@ -16,6 +16,7 @@ import { NgbdModalComponent } from './modal/modal.component';
 import { NgbdModalContent } from './modal/modal.component';
 import { RegisterComponent } from './register/register.component';
 import { TeamComponent } from './team/team.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
     imports: [
@@ -37,7 +38,8 @@ import { TeamComponent } from './team/team.component';
         NgbdModalComponent,
         NgbdModalContent,
         RegisterComponent,
-        TeamComponent
+        TeamComponent,
+        HomeComponent
     ],
     entryComponents: [NgbdModalContent],
     exports:[ ComponentsComponent ]

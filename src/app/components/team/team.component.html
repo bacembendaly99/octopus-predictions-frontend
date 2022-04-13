@@ -1,30 +1,32 @@
 <div class="wrapper">
-    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/fabio-mangione.jpg');">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/Football-background.jpg');">
         <div class="filter"></div>
     </div>
     <div class="section profile-content">
         <div class="container">
             <div class="owner">
                 <div class="avatar">
-                    <img src="./assets/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    <img src="http://localhost:3000/football/getLogo/{{currentTeam?.logoId}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                 </div>
                 <div class="name">
-                    <h4 class="title">Jane Faker<br /></h4>
-                    <h6 class="description">Music Producer</h6>
+                    <h4 class="title"><button type="button" class="btn btn-info btn-just-icon favourite-icon"><i class="fa fa-heart"></i></button>   {{currentTeam?.name}}</h4>
+
+                    <h6 class="description"><i class="fa fa-futbol-o" ></i>  {{currentTeam?.sport}} > <img src="http://localhost:3000/football/getFlag/{{currentTeam?.flagId}}" class="countryFlag">  {{currentTeam?.countryName}}</h6>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center">
-                    <p>An artist of considerable range, Jane Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate vitae lacus vel suscipit. Sed malesuada justo augue, sit amet mollis mauris placerat at. Maecenas sit amet purus eros. Aliquam erat volutpat.</p>
                     <br />
-                    <button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Settings</button>
+<!--                    <button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Settings</button>-->
                 </div>
             </div>
             <br/>
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
                     <ngb-tabset [justify]="'center'">
-                        <ngb-tab title="Follows">
+                        <ngb-tab title="Leagues">
                             <ng-template ngbTabContent >
                                 <div class="row following" id="follows">
                                     <div class="col-md-6 ml-auto mr-auto">
@@ -71,7 +73,7 @@
                                 </div>
                             </ng-template>
                         </ngb-tab>
-                        <ngb-tab title="Following">
+                        <ngb-tab title="Games">
                             <ng-template ngbTabContent>
                                 <h3 class="text-muted">Not following anyone yet :(</h3>
                                 <br>

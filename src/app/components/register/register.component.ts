@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PasswordValidator} from '../../shared/validators/passwordValidator';
 import {AuthService} from '../../shared/services/auth/auth.service';
 import {UserRegister} from '../../shared/dto/userRegister.interface';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   user: UserRegister;
 
   constructor(
-      private formBuilder: FormBuilder, private authService: AuthService
+      private formBuilder: FormBuilder, private authService: AuthService, private router: Router
   ) {
   }
 
@@ -31,11 +32,11 @@ export class RegisterComponent implements OnInit {
         ]],
         password: [null, [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(2),
         ]],
         repeatPassword: [null, [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(2),
         ]],
       }, {
         validators: PasswordValidator.passwordsMatch,
@@ -52,7 +53,11 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(user).subscribe(
         data => {
-          console.log(data)
+          // console.log(data)
+          localStorage.setItem('access_token', data.accessToken);
+          this.router.navigate(['home'])
+
+
         },
         error => {
           console.log('error : ', error);
