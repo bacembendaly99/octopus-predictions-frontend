@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { TeamComponent } from './team/team.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { LoginComponent } from './login/login.component';
         RegisterComponent,
         TeamComponent,
         HomeComponent,
-        LoginComponent
+        LoginComponent,
+        SidebarComponent
     ],
     entryComponents: [NgbdModalContent],
     exports:[ ComponentsComponent ]

@@ -12,7 +12,7 @@ export class FootballService {
   getTeam(id: any): Observable<any> {
     return this.http.get(`${environment.API_BASE}football/team/${id}`);
   }
-  // getTeamLogo(id: string): Observable<any> {
-  //   return this.http.get(`${FootUrl}getLogo/${id}`);
-  // }
+getALLCountries(): Observable<any> {
+    return this.http.get(environment.API_BASE + 'football/countries')
+}
 }
