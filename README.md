@@ -1,6 +1,11 @@
+<a href="https://github.com/Chouaib-Mrabet/octopus-predictions-backend" target="_blank">click to view the back-end repository </a>
+
+<a href="https://github.com/achourali/octopus-predictions-data-mining" target="_blank">click to view the data-mining repository </a>
+
+
 # OctopusPredictionsFrontend 🐙🐙
 
-Octopus Predcitions is a Website where you can find the best predictions for sports results 🧾
+Octopus Predictions is a Website where you can find the best predictions for sports results 🧾
 
 The name is inspired from Paul the famous octopus of the world cup 2010 
 
