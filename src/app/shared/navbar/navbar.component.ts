@@ -20,9 +20,9 @@ export class NavbarComponent implements OnInit {
     async ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
-        await this.authService.isLogged();
-        console.log('islogged call finished');
-        this.loggedin = this.authService.isLogin;
+        // await this.authService.isLogged();
+        // console.log('islogged call finished');
+        // this.loggedin = this.authService.isLogin;
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;

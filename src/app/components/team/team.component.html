@@ -1,25 +1,36 @@
 <div class="wrapper">
-    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/Football-background.jpg');">
+    <div class="page-header page-header-xs" data-parallax="true"
+         style="background-image: url('./assets/img/Football-background.jpg');">
         <div class="filter"></div>
     </div>
     <div class="section profile-content">
         <div class="container">
             <div class="owner">
                 <div class="avatar">
-                    <img src="http://localhost:3000/football/getLogo/{{currentTeam?.logoId}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    <img *ngIf="currentTeam" src="http://localhost:3000/football/getLogo/{{currentTeam?.logoId}}"
+                         alt="Circle Image"
+                         class="img-circle img-no-padding img-responsive">
                 </div>
                 <div class="name">
-                    <h4 class="title"><button type="button" class="btn btn-info btn-just-icon favourite-icon"><i class="fa fa-heart"></i></button>   {{currentTeam?.name}}</h4>
+                    <h4 class="title">
+                        <button type="button" class="btn btn-info btn-just-icon favourite-icon"><i
+                                class="fa fa-heart"></i></button>
+                        {{currentTeam?.name}}</h4>
 
-                    <h6 class="description"><i class="fa fa-futbol-o" ></i>  {{currentTeam?.sport}} > <img src="http://localhost:3000/football/getFlag/{{currentTeam?.flagId}}" class="countryFlag">  {{currentTeam?.countryName}}</h6>
+                    <h6 class="description"><i class="fa fa-futbol-o"></i>  {{currentTeam?.sport}}  > <img
+                            *ngIf="currentTeam"
+                            src="http://localhost:3000/football/getFlag/{{currentTeam?.flagId}}"
+                            class="countryFlag">  {{currentTeam?.countryName}}</h6>
                     <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate vitae lacus vel suscipit. Sed malesuada justo augue, sit amet mollis mauris placerat at. Maecenas sit amet purus eros. Aliquam erat volutpat.</p>
-                    <br />
-<!--                    <button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Settings</button>-->
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate vitae lacus vel
+                        suscipit. Sed malesuada justo augue, sit amet mollis mauris placerat at. Maecenas sit amet purus
+                        eros. Aliquam erat volutpat.</p>
+                    <br/>
+                    <!--                    <button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Settings</button>-->
                 </div>
             </div>
             <br/>
@@ -27,47 +38,35 @@
                 <div class="nav-tabs-wrapper">
                     <ngb-tabset [justify]="'center'">
                         <ngb-tab title="Leagues">
-                            <ng-template ngbTabContent >
+                            <ng-template ngbTabContent>
                                 <div class="row following" id="follows">
                                     <div class="col-md-6 ml-auto mr-auto">
                                         <ul class="list-unstyled follows">
-                                            <li>
-                                                <div class="row">
+                                            <li *ngFor="let league of leagues">
+                                                <hr>
+                                                <div class="row align-items-center">
                                                     <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                                        <img src="./assets/img/faces/clem-onojeghuo-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        <img src="http://localhost:3000/football/getLogo/{{league.logo}}"
+                                                             alt="league icon"
+                                                             class="img-circle img-no-padding img-responsive">
                                                     </div>
-                                                    <div class="col-md-7 col-sm-4 ml-auto">
-                                                        <h6>Flume<br/><small>Musical Producer</small></h6>
+                                                    <div class="col-md-4 col-sm-4 ml-auto">
+                                                        <h6 class="description">{{league.name}}</h6>
                                                     </div>
                                                     <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" value="" checked="">
+                                                                <a><strong>Follow</strong> </a><input
+                                                                    class="form-check-input" type="checkbox" value=""
+                                                                    checked="">
                                                                 <span class="form-check-sign"></span>
                                                             </label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <hr />
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                                        <img src="./assets/img/faces/ayo-ogunseinde-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                    </div>
-                                                    <div class="col-md-7 col-sm-4 ml-auto">
-                                                        <h6>Banks<br /><small>Singer</small></h6>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-2 ml-auto mr-auto">
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" value="" checked="">
-                                                                <span class="form-check-sign"></span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                            <hr/>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -75,9 +74,62 @@
                         </ngb-tab>
                         <ngb-tab title="Games">
                             <ng-template ngbTabContent>
-                                <h3 class="text-muted">Not following anyone yet :(</h3>
-                                <br>
-                                <button class="btn btn-warning btn-round">Find artists</button>
+                                <div class="row align-items-center justify-content-around">
+                                    <div ngbDropdown class="d-inline-block dropdown col-5">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Leagues</mat-label>
+                                            <mat-select [(ngModel)]="selectedLeagueId" name="leagues"
+                                                        (selectionChange)="updateSeasonsLeagueId(selectedLeagueId )">
+                                                <mat-option *ngFor="let league of leagues" value="{{league._id}}">
+                                                    {{league.name}}
+                                                </mat-option>
+                                                <!--                                             <mat-option>test</mat-option>-->
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div ngbDropdown class="d-inline-block dropdown col-5">
+                                        <mat-form-field appearance="fill">
+
+                                            <mat-label>Seasons</mat-label>
+                                            <mat-select [(ngModel)]="selectedSeasonId" name="seasons"
+                                                        (selectionChange)="updateSelectedGames(selectedSeasonId)">
+                                                <mat-option *ngFor="let season of SeasonsSelected"
+                                                            value="{{season._id}}">
+                                                    {{season.name}}
+                                                </mat-option>
+
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+
+                                </div>
+                                <hr>
+                                <div *ngFor="let game of selectedGames">
+                                    <div class="grid games">
+                                        <div class="row justify-content-center">{{game.round}}</div>
+                                        <div class="row justify-content-center"
+                                             *ngIf="game.finished">{{game.homeTeam.name}} {{footballService.calculateScoreByMatch(game,currentTeam).score}} {{game.awayTeam.name}}</div>
+                                        <div class="row justify-content-center" *ngIf="!game.finished">{{game.homeTeam.name}} - {{game.awayTeam.name}}</div>
+
+                                        <!--                                            <img-->
+<!--                                                *ngIf="game"-->
+<!--                                                src="http://localhost:3000/football/getLogo/{{game?.homeTeam?.logoId}}"-->
+<!--                                                alt="Circle Image"-->
+<!--                                                class="img-circle img-no-padding img-responsive">-->
+
+
+                                        <div class="row justify-content-center">{{game.date| date:'short'}}</div>
+                                        <span class="label label-success" *ngIf=" footballService.calculateScoreByMatch(game,currentTeam).result ===1 && game.finished">Win</span>
+                                        <span class="label label-danger" *ngIf=" footballService.calculateScoreByMatch(game,currentTeam).result ===2 && game.finished">Lost</span>
+                                        <span class="label label-default" *ngIf=" footballService.calculateScoreByMatch(game,currentTeam).result ===0 && game.finished">Draw</span>
+
+
+
+                                    </div>
+                                    <hr>
+
+                                </div>
                             </ng-template>
                         </ngb-tab>
                     </ngb-tabset>

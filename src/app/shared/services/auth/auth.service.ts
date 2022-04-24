@@ -17,22 +17,22 @@ register(data: UserRegister) {
      return this.http.post<any>(environment.API_BASE + 'auth/signup'  , data);
     this.isLogin = true;
 }
-whomai() {
-      return this.http.get(environment.API_BASE + 'auth/whoami')
-}
+// whomai() {
+//       return this.http.get(environment.API_BASE + 'auth/whoami')
+// }
 
-async  isLogged(): Promise<any> {
-      console.log('islogged func started')
-   this.whomai().subscribe(
-    data => {
-        console.log(data)
-        this.isLogin = true;
-        console.log('islogged updated true')
-    },
-     err => {console.log(err);
-        this.isLogin = false;
-    })
-
-
-}
+// async  isLogged(): Promise<any> {
+//       console.log('islogged func started')
+//    this.whomai().subscribe(
+//     data => {
+//         console.log(data)
+//         this.isLogin = true;
+//         console.log('islogged updated true')
+//     },
+//      err => {console.log(err);
+//         this.isLogin = false;
+//     })
+//
+//
+// }
 }

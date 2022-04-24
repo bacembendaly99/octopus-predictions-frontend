@@ -1,13 +1,13 @@
 export class Team {
 
-    id: string;
+    _id: string;
     name: string;
     sport: string;
     countryName: string;
     logoId: string;
     flagId: string;
     constructor(id?: string, name?: string, sport?: string, countryName?: string, logoId?: string, flagId?: string) {
-        this.id = id || '';
+        this._id = id || '';
         this.name = name || '';
         this.sport = sport || '';
         this.countryName = countryName || '';

@@ -11,6 +11,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ComponentsModule } from './components/components.module';
 import {JwtModule} from '@auth0/angular-jwt';
 import {environment} from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {environment} from '../environments/environment';
           },
           allowedDomains: [environment.DOMAIN]
       }}),
+      BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

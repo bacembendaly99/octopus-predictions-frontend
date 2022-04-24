@@ -3,5 +3,13 @@
 }
 .countryFlag {
     height: 15px; margin-bottom: 0.3%;
+}
 
+.description {
+    font-size: 15px;
+}
+
+
+.games {
+    font-weight: bold;
 }
