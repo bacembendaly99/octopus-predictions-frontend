@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatSelectModule} from '@angular/material/select';
+import { BarnavComponent } from './barnav/barnav.component';
 
 @NgModule({
     imports: [
@@ -45,7 +46,8 @@ import {MatSelectModule} from '@angular/material/select';
         TeamComponent,
         HomeComponent,
         LoginComponent,
-        SidebarComponent
+        SidebarComponent,
+        BarnavComponent
     ],
     entryComponents: [NgbdModalContent],
     exports:[ ComponentsComponent ]

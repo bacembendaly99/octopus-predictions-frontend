@@ -1,32 +1,27 @@
-import { NgModule } from '@angular/core';
-import { CommonModule, } from '@angular/common';
-import { BrowserModule  } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
-import { LandingComponent } from './components/landing/landing.component';
-import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
-import {RegisterComponent} from './components/register/register.component';
-import {TeamComponent} from './components/team/team.component';
-import {HomeComponent} from './components/home/home.component';
-import {LoginComponent} from './components/login/login.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { Routes, RouterModule } from "@angular/router";
+import { LandingComponent } from "./components/landing/landing.component";
+import { NucleoiconsComponent } from "./components/nucleoicons/nucleoicons.component";
+import { RegisterComponent } from "./components/register/register.component";
+import { TeamComponent } from "./components/team/team.component";
+import { HomeComponent } from "./components/home/home.component";
+import { LoginComponent } from "./components/login/login.component";
 
 const routes: Routes = [
-    { path: '', redirectTo: 'register', pathMatch: 'full' },
-    { path: 'home',             component: HomeComponent },
-    { path: 'team/:id',     component: TeamComponent  },
-    { path: 'register',           component: RegisterComponent },
-    { path: 'login',           component: LoginComponent },
-    { path: 'landing',          component: LandingComponent },
-    { path: 'nucleoicons',      component: NucleoiconsComponent }
+  { path: "", redirectTo: "register", pathMatch: "full" },
+  { path: "home", component: HomeComponent },
+  { path: "team/:id", component: TeamComponent },
+  { path: "register", component: RegisterComponent },
+  { path: "login", component: LoginComponent },
+  { path: "landing", component: LandingComponent },
+  { path: "nucleoicons", component: NucleoiconsComponent },
+  //{ path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    BrowserModule,
-    RouterModule.forRoot(routes
-    )
-  ],
-  exports: [
-  ],
+  imports: [CommonModule, BrowserModule, RouterModule.forRoot(routes)],
+  exports: [],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
