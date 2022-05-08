@@ -16,7 +16,7 @@ export class FootballService {
     }
 
     getTeam(id: any): Observable<any> {
-        return this.http.get(`${environment.API_BASE}football/team/${id}`);
+        return this.http.get<Team>(`${environment.API_BASE}football/team/${id}`);
     }
 
     getALLCountries(): Observable<any> {
@@ -58,5 +58,10 @@ export class FootballService {
             score: (homeScore + ' - ' + awayScore),
             result: result
         })
+    }
+
+    getMatchById (id) {
+        return this.http.get<Match>(`${environment.API_BASE}football/match/${id}`);
+
     }
 }

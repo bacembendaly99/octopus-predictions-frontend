@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FootballService} from '../../shared/services/football/football.service';
 import {Team} from '../../shared/dto/team.interface';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -8,6 +8,7 @@ import {League} from '../../shared/dto/league.interface';
 import {error} from 'protractor';
 import {Season} from '../../shared/dto/season.interface';
 import {Match} from '../../shared/dto/match.interface';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-team',
@@ -15,7 +16,8 @@ import {Match} from '../../shared/dto/match.interface';
     styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
-    currentTeam: any;
+    environmentAPI = environment.API_BASE;
+    currentTeam: Team;
     logo: any;
     leagues: [League];
     SeasonsSelected: [Season];
@@ -26,7 +28,7 @@ export class TeamComponent implements OnInit {
 
 
     constructor(private footballService: FootballService,
-                private route: ActivatedRoute, private authService: AuthService) {
+                private route: ActivatedRoute, private authService: AuthService, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -39,7 +41,7 @@ export class TeamComponent implements OnInit {
             .subscribe(
                 data => {
                     // console.log(data);
-                    this.currentTeam = new Team(data._id, data.name, data.sport.name, data.country.name, data.logo, data.country.flag);
+                    this.currentTeam = data;
                     // console.log(this.currentTeam);
                 },
                 error1 => {
@@ -118,5 +120,9 @@ export class TeamComponent implements OnInit {
 
                 },
                 );
+    }
+
+    goToGame(_id: string) {
+        this.router.navigate(['game', _id])
     }
 }

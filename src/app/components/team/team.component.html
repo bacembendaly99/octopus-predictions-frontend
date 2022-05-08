@@ -7,7 +7,7 @@
         <div class="container">
             <div class="owner">
                 <div class="avatar">
-                    <img *ngIf="currentTeam" src="http://localhost:3000/football/getLogo/{{currentTeam?.logoId}}"
+                    <img *ngIf="currentTeam" src="{{environmentAPI}}football/getLogo/{{currentTeam?.logo}}"
                          alt="Circle Image"
                          class="img-circle img-no-padding img-responsive">
                 </div>
@@ -17,10 +17,10 @@
                                 class="fa fa-heart"></i></button>
                         {{currentTeam?.name}}</h4>
 
-                    <h6 class="description"><i class="fa fa-futbol-o"></i>  {{currentTeam?.sport}}  > <img
+                    <h6 class="description"><i class="fa fa-futbol-o"></i>  {{currentTeam?.sport?.name}}  > <img
                             *ngIf="currentTeam"
-                            src="http://localhost:3000/football/getFlag/{{currentTeam?.flagId}}"
-                            class="countryFlag">  {{currentTeam?.countryName}}</h6>
+                            src="{{environmentAPI}}football/getFlag/{{currentTeam?.country.flag}}"
+                            class="countryFlag">  {{currentTeam?.country?.name}}</h6>
                     <br>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                                                 <hr>
                                                 <div class="row align-items-center">
                                                     <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                                        <img src="http://localhost:3000/football/getLogo/{{league.logo}}"
+                                                        <img src="{{environmentAPI}}football/getLogo/{{league.logo}}"
                                                              alt="league icon"
                                                              class="img-circle img-no-padding img-responsive">
                                                     </div>
@@ -106,7 +106,9 @@
                                 </div>
                                 <hr>
                                 <div *ngFor="let game of selectedGames">
-                                    <div class="grid games">
+                                    <a (click)="goToGame(game._id)">
+                                    <div class="grid games" >
+
                                         <div class="row justify-content-center">{{game.round}}</div>
                                         <div class="row justify-content-center"
                                              *ngIf="game.finished">{{game.homeTeam.name}} {{footballService.calculateScoreByMatch(game,currentTeam).score}} {{game.awayTeam.name}}</div>
@@ -125,8 +127,9 @@
                                         <span class="label label-default" *ngIf=" footballService.calculateScoreByMatch(game,currentTeam).result ===0 && game.finished">Draw</span>
 
 
-
                                     </div>
+                                    </a>
+
                                     <hr>
 
                                 </div>

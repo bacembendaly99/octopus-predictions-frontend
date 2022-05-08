@@ -1,0 +1,39 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true"
+         style="background-image: url('./assets/img/Football-background.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section profile-content">
+        <div class="container">
+            <div class="owner">
+                <div class="avatar">
+                    <img *ngIf="currentHomeTeam" src="{{environmentAPI}}football/getLogo/{{currentHomeTeam?.logo}}"
+                         alt="Circle Image"
+                         class="img-circle img-no-padding img-responsive">
+                </div>
+                <div class="avatar">
+                    <img *ngIf="currentAwayTeam" src="{{environmentAPI}}football/getLogo/{{currentAwayTeam?.logo}}"
+                         alt="Circle Image"
+                         class="img-circle img-no-padding img-responsive">
+                </div>
+                <div class="name">
+                    <h4 class="title">
+                        {{currentHomeTeam?.name}} &nbsp; &nbsp; &nbsp; VS &nbsp; &nbsp;
+                        &nbsp; {{currentAwayTeam.name}}</h4>
+<h4>{{currentMatch.season.name}} - {{currentMatch.round}}</h4>
+                    <h4>{{currentMatch.date|date:'short'}}</h4>
+                </div>
+                <br>
+                <hr>
+                <div *ngFor="let goal of currentMatch.goals">
+                    <h4 *ngIf="goal.homeTeam" class="homeT"><i class="fa fa-futbol-o"></i> Goal({{goal.time}})</h4>
+                    <h4 *ngIf="!goal.homeTeam" class="awayT">Goal({{goal.time}}) <i class="fa fa-futbol-o"></i></h4>
+                    <hr>
+
+                </div>
+            </div>
+
+            <br/>
+        </div>
+    </div>
+</div>

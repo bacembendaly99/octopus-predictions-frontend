@@ -12,14 +12,14 @@ import { TypographyComponent } from './typography/typography.component';
 import { NucleoiconsComponent } from './nucleoicons/nucleoicons.component';
 import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';
-import { NgbdModalComponent } from './modal/modal.component';
-import { NgbdModalContent } from './modal/modal.component';
+
 import { RegisterComponent } from './register/register.component';
 import { TeamComponent } from './team/team.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatSelectModule} from '@angular/material/select';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
     imports: [
@@ -39,15 +39,13 @@ import {MatSelectModule} from '@angular/material/select';
         TypographyComponent,
         NucleoiconsComponent,
         NotificationComponent,
-        NgbdModalComponent,
-        NgbdModalContent,
         RegisterComponent,
         TeamComponent,
         HomeComponent,
         LoginComponent,
-        SidebarComponent
+        SidebarComponent,
+        GameComponent
     ],
-    entryComponents: [NgbdModalContent],
-    exports:[ ComponentsComponent ]
+    exports: [ ComponentsComponent ],
 })
 export class ComponentsModule { }
