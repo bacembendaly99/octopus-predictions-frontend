@@ -25,6 +25,7 @@ export class TeamComponent implements OnInit {
     selectedLeagueId: string;
     selectedSeasonId: string;
     selectedGames: [Match]
+    componentName = 'Team';
 
 
     constructor(private footballService: FootballService,

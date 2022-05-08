@@ -26,4 +26,8 @@ describe('TeamComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('testing name', () => {
+        expect(component.componentName).toBe('Team');
+    });
 });
