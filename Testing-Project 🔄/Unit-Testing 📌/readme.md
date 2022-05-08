@@ -31,9 +31,13 @@ initialisation of the TestBed:
 ![img_5.png](img_5.png)
 
 <br>
-If we run `ng test` we get the Karma interface 
+If we run:  
 
-<br>
+```ng test```
+
+we get the Karma interface launched:
+<br><br>
+
 
 ![img_3.png](img_3.png)
 
