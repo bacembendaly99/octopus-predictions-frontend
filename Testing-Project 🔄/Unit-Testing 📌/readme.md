@@ -42,10 +42,27 @@ we get the Karma interface launched:
 ![img_3.png](img_3.png)
 
 The first test is for the component creation:
+<br><br>
+
 
 ![img_4.png](img_4.png)
 
 
 The second test is to test an attribute inside the component : componentName.
+<br><br>
 
 ![img_6.png](img_6.png)
+
+The third test is going to be about the routing using **RouterTestingModule**  and the **spyOn the navigate function**
+<br><br>
+
+
+![img_7.png](img_7.png)
+
+
+If everything is going as planned the Karma interface should give this result :
+<br><br>
+
+![img_8.png](img_8.png)
+
+

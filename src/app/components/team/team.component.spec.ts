@@ -1,7 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TeamComponent } from './team.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {TeamComponent} from './team.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
+import {Router} from '@angular/router';
 
 
 describe('TeamComponent', () => {
@@ -10,9 +11,11 @@ describe('TeamComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule, RouterTestingModule],
+            imports: [RouterTestingModule.withRoutes([]),
+                HttpClientTestingModule,
+                RouterTestingModule],
             providers: [],
-            declarations: [ TeamComponent ],
+            declarations: [TeamComponent],
         })
             .compileComponents();
     });
@@ -23,11 +26,21 @@ describe('TeamComponent', () => {
         fixture.detectChanges();
     });
 
+
+
     it('should create', () => {
         expect(component).toBeTruthy();
     });
 
     it('testing name', () => {
         expect(component.componentName).toBe('Team');
+    });
+
+    it('should navigate', () => {
+        let router: Router;
+        router = TestBed.inject(Router);
+        const navigateSpy = spyOn(router, 'navigate');
+        component.goToGame('0');
+        expect(navigateSpy).toHaveBeenCalledWith(['game', '0']);
     });
 });

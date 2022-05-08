@@ -10,7 +10,7 @@ import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {GameComponent} from './components/game/game.component';
 
-const routes: Routes = [
+export const routes: Routes = [
     { path: '', redirectTo: 'register', pathMatch: 'full' },
     { path: 'home',             component: HomeComponent },
     { path: 'team/:id',     component: TeamComponent  },
