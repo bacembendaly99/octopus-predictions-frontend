@@ -26,11 +26,14 @@ Here we deleted all spec file except for the <a href='https://github.com/bacembe
 
 <br>
 initialisation of the TestBed:
+<br>
 
 ![img_5.png](img_5.png)
 
 <br>
-If we run _**`ng test`**_ we get the Karma interface 
+If we run `ng test` we get the Karma interface 
+
+<br>
 
 ![img_3.png](img_3.png)
 
