@@ -1,2 +1,60 @@
-<app-sidebar></app-sidebar>
-<p>home works!</p>
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true"
+         style="background-image: url('./assets/img/Football-background.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section profile-content">
+        <nav class="navbar navbar-expand-md navbar-default">
+            <a class="navbar-brand ">Leagues \ Sports</a>
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home"><i class="fa fa-futbol-o"></i> Football</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="soon"><i class="fa-solid fa-basketball"></i>
+                            Basketball</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pk"><i class="fa-solid fa-table-tennis-paddle-ball"></i>
+                            Tennis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pk"><i class="fa-solid fa-hockey-puck"></i>
+                            Hockey</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pk"><i class="fa-solid fa-baseball-bat-ball"></i>
+                            Baseball</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pk"><i class="fa-solid fa-golf-ball-tee"></i>
+                            Golf</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pk"><i class="fa-solid fa-volleyball"></i>
+                            Volleyball</a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#pk"><i class="fa-solid fa-football"></i>-->
+<!--                            American Football</a>-->
+<!--                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pk"><i class="fa-solid fa-bicycle"></i>
+                            Cycling</a>
+                    </li>
+                    <li class="nav-item ">
+                        <div ngbDropdown class="d-inline-block dropdown">
+                            <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>More</a>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary" >
+                                <a *ngFor="let sport of sports" class="dropdown-item">{{sport.name | titlecase }}</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    </div>
+</div>

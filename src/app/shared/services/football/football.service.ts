@@ -3,8 +3,10 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 import {Team} from '../../dto/team.interface';
-import {League} from '../../dto/league.interface';
+import {League, LeagueGroup} from '../../dto/league.interface';
 import {Goal, Match, Score} from '../../dto/match.interface';
+import {Sport} from '../../dto/sport.interface';
+import {filter, map} from 'rxjs/operators';
 
 // const FootUrl = 'http://localhost:3000/football/'
 @Injectable({
@@ -48,11 +50,19 @@ export class FootballService {
             }
         }
         if (game.homeTeam._id === homeTeam._id) {
-            if (homeScore > awayScore) { result = 1; }
-            if (homeScore < awayScore) { result = 2; }
+            if (homeScore > awayScore) {
+                result = 1;
+            }
+            if (homeScore < awayScore) {
+                result = 2;
+            }
         } else {
-            if (homeScore < awayScore) { result = 1; }
-            if (homeScore > awayScore) { result = 2; }
+            if (homeScore < awayScore) {
+                result = 1;
+            }
+            if (homeScore > awayScore) {
+                result = 2;
+            }
         }
         return ({
             score: (homeScore + ' - ' + awayScore),
@@ -60,8 +70,18 @@ export class FootballService {
         })
     }
 
-    getMatchById (id) {
+    getMatchById(id) {
         return this.http.get<Match>(`${environment.API_BASE}football/match/${id}`);
+
+    }
+
+    getSports() {
+        return this.http.get<Array<Sport>>(`${environment.API_BASE}sports`);
+        // .pipe(
+        // ;
+    }
+    getAllLeaguesByCountry () {
+        return this.http.get<Array<LeagueGroup>>(`${environment.API_BASE}sports`);
 
     }
 }

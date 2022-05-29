@@ -124,6 +124,6 @@ export class TeamComponent implements OnInit {
     }
 
     goToGame(_id: string) {
-        this.router.navigate(['game', _id])
+        this.router.navigate(['game', _id]);
     }
 }
