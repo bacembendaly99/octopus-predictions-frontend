@@ -54,7 +54,10 @@
                 </ul>
             </div>
         </nav>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="sidenav">
 
+            <a *ngFor="let league of leaguesGroups">{{league.country.name | titlecase }}</a>
+        </div>
     </div>
+
 </div>

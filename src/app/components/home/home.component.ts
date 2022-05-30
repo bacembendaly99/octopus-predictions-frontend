@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FootballService} from '../../shared/services/football/football.service';
 import {Sport} from '../../shared/dto/sport.interface';
 import {element} from 'protractor';
+import {LeagueGroup} from '../../shared/dto/league.interface';
 
 @Component({
     selector: 'app-home',
@@ -10,6 +11,7 @@ import {element} from 'protractor';
 })
 export class HomeComponent implements OnInit {
     sports = Array<Sport>();
+    leaguesGroups = Array<LeagueGroup>();
 
     constructor(private footballService: FootballService) {
     }
@@ -22,8 +24,14 @@ export class HomeComponent implements OnInit {
                 // this.sports = this.sports.filter(sport => sport.name !== 'tennis');
                 this.sports = this.sports.filter(sport => !['tennis', 'football', 'basketball', 'hockey', 'baseball', 'golf', 'volleyball', 'cycling'].includes(sport.name));
 
-                console.log(this.sports);
+                // console.log(this.sports);
             },
+        )
+        this.footballService.getAllLeaguesByCountry().subscribe(
+            data => {
+                this.leaguesGroups = data;
+                console.log(this.leaguesGroups);
+            }
         )
     }
 
