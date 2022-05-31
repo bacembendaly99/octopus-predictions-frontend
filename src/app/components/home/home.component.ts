@@ -12,6 +12,7 @@ import {LeagueGroup} from '../../shared/dto/league.interface';
 export class HomeComponent implements OnInit {
     sports = Array<Sport>();
     leaguesGroups = Array<LeagueGroup>();
+    selectedLeagueId = '0';
 
     constructor(private footballService: FootballService) {
     }
@@ -40,4 +41,8 @@ export class HomeComponent implements OnInit {
     //     return (name !== 'football');
     // }
 
+    changeLeague(_id: string) {
+        this.selectedLeagueId = _id;
+
+    }
 }

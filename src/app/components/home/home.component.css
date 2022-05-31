@@ -8,10 +8,12 @@
 /* The sidebar menu */
 .sidenav {
     /*height: 100%; !* Full-height: remove this if you want "auto" height *!*/
-    width: 14%; /* Set the width of the sidebar */
+    width: 100%; /* Set the width of the sidebar */
     background-color: lightgray; /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 3px;
+    padding-top: 15px;
+    padding-left: 0px;
+    margin-left: 0px;
 }
 
 /* The navigation menu links */
@@ -21,9 +23,24 @@
     font-size: 15px;
     color: black;
     display: block;
+    cursor: pointer;
+    cursor: pointer;
 }
 
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: #f1f1f1;
+/*.sidenav a:hover {*/
+/*    color: #f1f1f1;*/
+/*}*/
+.col {
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+}
+
+.DefaultMsg {
+    padding-top: 30px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+
+
 }

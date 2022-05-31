@@ -35,10 +35,10 @@
                         <a class="nav-link" href="#pk"><i class="fa-solid fa-volleyball"></i>
                             Volleyball</a>
                     </li>
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" href="#pk"><i class="fa-solid fa-football"></i>-->
-<!--                            American Football</a>-->
-<!--                    </li>-->
+                    <!--                    <li class="nav-item">-->
+                    <!--                        <a class="nav-link" href="#pk"><i class="fa-solid fa-football"></i>-->
+                    <!--                            American Football</a>-->
+                    <!--                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="#pk"><i class="fa-solid fa-bicycle"></i>
                             Cycling</a>
@@ -46,7 +46,7 @@
                     <li class="nav-item ">
                         <div ngbDropdown class="d-inline-block dropdown">
                             <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>More</a>
-                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary" >
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
                                 <a *ngFor="let sport of sports" class="dropdown-item">{{sport.name | titlecase }}</a>
                             </div>
                         </div>
@@ -54,10 +54,28 @@
                 </ul>
             </div>
         </nav>
-        <div class="sidenav">
+        <div class="row">
+            <div class="col-2">
+                <div class="sidenav">
+                    <ngb-accordion *ngFor="let country of leaguesGroups">
+                        <ngb-panel title="{{country.country.name | titlecase }}  >">
+                            <ng-template ngbPanelContent>
+                                <a *ngFor="let league of country.leagues" (click)="changeLeague(league._id)">{{league.name | titlecase }}</a>
 
-            <a *ngFor="let league of leaguesGroups">{{league.country.name | titlecase }}</a>
+                            </ng-template>
+                        </ngb-panel>
+
+
+                    </ngb-accordion>
+                </div>
+            </div>
+            <div class="col DefaultMsg" *ngIf="selectedLeagueId==='0'"> Please select a league</div>
+            <div class="col DefaultMsg" *ngIf="selectedLeagueId!=='0'">Selected League ID: {{selectedLeagueId}}</div>
+
+
         </div>
+
+
     </div>
 
 </div>
