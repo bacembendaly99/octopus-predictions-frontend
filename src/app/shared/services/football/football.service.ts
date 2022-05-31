@@ -82,6 +82,9 @@ export class FootballService {
     }
     getAllLeaguesByCountry () {
         return this.http.get<Array<LeagueGroup>>(`${environment.API_BASE}football/countriesleagues`);
-
     }
+
+    getGamesFinishedByLeagueId(_id) {
+        return this.http.get<Array<Match>>(`${environment.API_BASE}football/${_id}/finished/matches`);
+}
 }

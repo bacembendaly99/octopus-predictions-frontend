@@ -57,10 +57,20 @@
         <div class="row">
             <div class="col-2">
                 <div class="sidenav">
+                    <ngb-accordion >
+                        <ngb-panel title="Top Leagues">
+                            <ng-template ngbPanelContent>
+                                <a (click)="changeLeague('6250d82b81afe4381753aefa','World Cup')">World Cup</a>
+
+                            </ng-template>
+                        </ngb-panel>
+
+
+                    </ngb-accordion>
                     <ngb-accordion *ngFor="let country of leaguesGroups">
                         <ngb-panel title="{{country.country.name | titlecase }}  >">
                             <ng-template ngbPanelContent>
-                                <a *ngFor="let league of country.leagues" (click)="changeLeague(league._id)">{{league.name | titlecase }}</a>
+                                <a *ngFor="let league of country.leagues" (click)="changeLeague(league._id,league.name)">{{league.name | titlecase }}</a>
 
                             </ng-template>
                         </ngb-panel>
@@ -70,7 +80,37 @@
                 </div>
             </div>
             <div class="col DefaultMsg" *ngIf="selectedLeagueId==='0'"> Please select a league</div>
-            <div class="col DefaultMsg" *ngIf="selectedLeagueId!=='0'">Selected League ID: {{selectedLeagueId}}</div>
+            <div class="col DefaultMsg" *ngIf="selectedLeagueId!=='0'">Selected League : {{selectedLeagueName}}
+                <br>
+                <br>
+                <hr>
+                <div *ngFor="let game of selectedGames">
+                    <a (click)="goToGame(game._id)">
+                        <div class="grid games" >
+
+                            <div class="row justify-content-center">{{game.round}}</div>
+                            <div class="row justify-content-center"
+                                 *ngIf="game.finished">{{game.homeTeam.name | titlecase }} {{footballService.calculateScoreByMatch(game,game.homeTeam).score}} {{game.awayTeam.name | titlecase }}</div>
+                            <div class="row justify-content-center" *ngIf="!game.finished">{{game.homeTeam.name}} - {{game.awayTeam.name}}</div>
+
+                            <!--                                            <img-->
+                            <!--                                                *ngIf="game"-->
+                            <!--                                                src="http://localhost:3000/football/getLogo/{{game?.homeTeam?.logoId}}"-->
+                            <!--                                                alt="Circle Image"-->
+                            <!--                                                class="img-circle img-no-padding img-responsive">-->
+
+
+                            <div class="row justify-content-center">{{game.date| date:'short'}}</div>
+
+
+                        </div>
+                    </a>
+
+                    <hr>
+
+                </div>
+            </div>
+
 
 
         </div>
