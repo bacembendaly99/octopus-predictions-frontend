@@ -12,10 +12,9 @@
                          class="img-circle img-no-padding img-responsive">
                 </div>
                 <div class="name">
-                    <h4 class="title">
-                        <button type="button" class="btn btn-info btn-just-icon favourite-icon"><i
-                                class="fa fa-heart"></i></button>
-                        {{currentTeam?.name}}</h4>
+                    <h4 class="title" style="font-weight: bold">
+
+                        {{currentTeam?.name | titlecase}}</h4>
 
                     <h6 class="description"><i class="fa fa-futbol-o"></i>  {{currentTeam?.sport?.name}}  > <img
                             *ngIf="currentTeam"

@@ -80,11 +80,21 @@ export class FootballService {
         // .pipe(
         // ;
     }
-    getAllLeaguesByCountry () {
+
+    getAllLeaguesByCountry() {
         return this.http.get<Array<LeagueGroup>>(`${environment.API_BASE}football/countriesleagues`);
     }
 
     getGamesFinishedByLeagueId(_id) {
         return this.http.get<Array<Match>>(`${environment.API_BASE}football/${_id}/finished/matches`);
-}
+    }
+
+    getLeagueById(id) {
+        return this.http.get<League>(`${environment.API_BASE}football/league/${id}`);
+
+    }
+
+    getGamesOfLeagueBySeason(id, state) {
+        return this.http.get<Array<Match>>(`${environment.API_BASE}football/${id}/matches/${state}`);
+    }
 }

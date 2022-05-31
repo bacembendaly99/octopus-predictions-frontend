@@ -9,12 +9,15 @@ import {TeamComponent} from './components/team/team.component';
 import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {GameComponent} from './components/game/game.component';
+import {League} from './shared/dto/league.interface';
+import {LeagueComponent} from './components/league/league.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home',             component: HomeComponent },
     { path: 'team/:id',     component: TeamComponent  },
     { path: 'game/:id',     component: GameComponent  },
+    { path: 'league/:id',     component: LeagueComponent  },
     { path: 'register',           component: RegisterComponent },
     { path: 'login',           component: LoginComponent },
     { path: 'landing',          component: LandingComponent },

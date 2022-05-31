@@ -50,3 +50,21 @@
     cursor: pointer;
 
 }
+
+
+.league-name {
+    color: darkslateblue;
+    cursor: pointer;
+}
+
+
+.countryFlag {
+    height: 15px; margin-top: 0.2%;
+    margin-right: 0.2%;
+    margin-left: 0.2%;
+}
+
+
+ngb-panel {
+    border-radius: 0px!important;
+}

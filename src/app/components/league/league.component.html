@@ -1,0 +1,123 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true"
+         style="background-image: url('./assets/img/Football-background.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section profile-content">
+        <div class="container">
+            <div class="owner">
+                <div class="avatar">
+                    <img *ngIf="currentLeague" src="{{environmentAPI}}football/getLogo/{{currentLeague?.logo}}"
+                         alt="Circle Image"
+                         class="img-circle img-no-padding img-responsive">
+                </div>
+                <div class="name">
+                    <h4 class="title" style="font-weight: bold">
+
+                        {{currentLeague?.name | titlecase}}</h4>
+
+                    <h6 class="description">Country : <img
+                            *ngIf="currentLeague"
+                            src="{{environmentAPI}}football/getFlag/{{currentLeague?.country.flag}}"
+                            class="countryFlag1">  {{currentLeague?.country?.name}}</h6>
+                    <br>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6 ml-auto mr-auto text-center">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate vitae lacus vel
+                        suscipit. Sed malesuada justo augue, sit amet mollis mauris placerat at. Maecenas sit amet purus
+                        eros. Aliquam erat volutpat.</p>
+                    <br/>
+                    <!--                    <button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Settings</button>-->
+                </div>
+            </div>
+
+            <hr>
+            <br>
+            <div class="row align-items-center justify-content-around">
+
+                <div ngbDropdown class="d-inline-block dropdown col-5">
+                    <mat-form-field appearance="fill">
+
+                        <mat-label>Seasons</mat-label>
+                        <mat-select [(ngModel)]="selectedSeasonId" name="seasons"
+                                    (selectionChange)="updateSelectedGames(selectedSeasonId,State)">
+                            <mat-option *ngFor="let season of currentSeasons"
+                                        value="{{season._id}}">
+                                {{season.name}}
+                            </mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div ngbDropdown class="d-inline-block dropdown col-5 ">
+                    <mat-form-field appearance="fill">
+
+                        <mat-label>State</mat-label>
+                        <mat-select [(ngModel)]="State" name="state"
+                                    (selectionChange)="updateSelectedGames(selectedSeasonId,State)"
+                                    [(value)]="defaultState">
+                            <mat-option
+                                    value="finished">
+                                Finished
+                            </mat-option>
+                            <mat-option
+                                    value="notfinished">
+                                Not finished
+                            </mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+            </div>
+            <br>
+            <hr>
+            <div *ngFor="let game of selectedGames">
+                <a (click)="goToGame(game._id)">
+                    <div class="grid games">
+
+                        <div class="row justify-content-center">{{game.round}}</div>
+                        <div class="row justify-content-center"
+                             *ngIf="game.finished"><img
+                                *ngIf="selectedGames"
+                                src="{{environmentAPI}}football/getLogo/{{game.homeTeam?.logo}}"
+                                class="countryFlag">{{game.homeTeam.name | titlecase }} {{footballService.calculateScoreByMatch(game, game.homeTeam).score}} {{game.awayTeam.name | titlecase }}
+                            <img
+                                    *ngIf="selectedGames"
+                                    src="{{environmentAPI}}football/getLogo/{{game.awayTeam?.logo}}"
+                                    class="countryFlag"></div>
+                        <div class="row justify-content-center" *ngIf="!game.finished"><img
+                                *ngIf="selectedGames"
+                                src="{{environmentAPI}}football/getLogo/{{game.homeTeam?.logo}}"
+                                class="countryFlag">{{game.homeTeam.name}}
+                            - {{game.awayTeam.name}}<img
+                                    *ngIf="selectedGames"
+                                    src="{{environmentAPI}}football/getLogo/{{game.awayTeam?.logo}}"
+                                    class="countryFlag"></div>
+
+                        <!--                                            <img-->
+                        <!--                                                *ngIf="game"-->
+                        <!--                                                src="http://localhost:3000/football/getLogo/{{game?.homeTeam?.logoId}}"-->
+                        <!--                                                alt="Circle Image"-->
+                        <!--                                                class="img-circle img-no-padding img-responsive">-->
+
+
+                        <div class="row justify-content-center">{{game.date| date:'short'}}</div>
+
+
+                    </div>
+                </a>
+
+                <hr>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatSelectModule} from '@angular/material/select';
 import { GameComponent } from './game/game.component';
+import { LeagueComponent } from './league/league.component';
 
 @NgModule({
     imports: [
@@ -44,7 +45,8 @@ import { GameComponent } from './game/game.component';
         HomeComponent,
         LoginComponent,
         SidebarComponent,
-        GameComponent
+        GameComponent,
+        LeagueComponent
     ],
     exports: [ ComponentsComponent ],
 })

@@ -57,20 +57,23 @@
         <div class="row">
             <div class="col-2">
                 <div class="sidenav">
-                    <ngb-accordion >
+                    <ngb-accordion>
                         <ngb-panel title="Top Leagues">
                             <ng-template ngbPanelContent>
-                                <a (click)="changeLeague('6250d82b81afe4381753aefa','World Cup')">World Cup</a>
+                                <a (click)="changeLeague('6250d82b81afe4381753aefa','World Cup')">
+                                    World Cup</a>
+                                <a (click)="changeLeague('6250d75e81afe4381753aade','La Liga')">La Liga</a>
 
                             </ng-template>
                         </ngb-panel>
 
-
                     </ngb-accordion>
+
                     <ngb-accordion *ngFor="let country of leaguesGroups">
                         <ngb-panel title="{{country.country.name | titlecase }}  >">
                             <ng-template ngbPanelContent>
-                                <a *ngFor="let league of country.leagues" (click)="changeLeague(league._id,league.name)">{{league.name | titlecase }}</a>
+                                <a *ngFor="let league of country.leagues"
+                                   (click)="changeLeague(league._id,league.name)">{{league.name | titlecase }}</a>
 
                             </ng-template>
                         </ngb-panel>
@@ -80,18 +83,26 @@
                 </div>
             </div>
             <div class="col DefaultMsg" *ngIf="selectedLeagueId==='0'"> Please select a league</div>
-            <div class="col DefaultMsg" *ngIf="selectedLeagueId!=='0'">Selected League : {{selectedLeagueName}}
+            <div class="col DefaultMsg" *ngIf="selectedLeagueId!=='0'">Selected League : <span class="league-name"
+                                                                                               (click)="GoToLeague(selectedLeagueId)">{{selectedLeagueName}}</span>
                 <br>
                 <br>
                 <hr>
                 <div *ngFor="let game of selectedGames">
                     <a (click)="goToGame(game._id)">
-                        <div class="grid games" >
+                        <div class="grid games">
 
                             <div class="row justify-content-center">{{game.round}}</div>
                             <div class="row justify-content-center"
-                                 *ngIf="game.finished">{{game.homeTeam.name | titlecase }} {{footballService.calculateScoreByMatch(game,game.homeTeam).score}} {{game.awayTeam.name | titlecase }}</div>
-                            <div class="row justify-content-center" *ngIf="!game.finished">{{game.homeTeam.name}} - {{game.awayTeam.name}}</div>
+                                 *ngIf="game.finished"><img
+                                    *ngIf="leaguesGroups"
+                                    src="{{environmentAPI}}football/getLogo/{{game.homeTeam?.logo}}"
+                                    class="countryFlag">{{game.homeTeam.name | titlecase }} {{footballService.calculateScoreByMatch(game, game.homeTeam).score}} {{game.awayTeam.name | titlecase }}<img
+                                    *ngIf="leaguesGroups"
+                                    src="{{environmentAPI}}football/getLogo/{{game.awayTeam?.logo}}"
+                                    class="countryFlag"></div>
+                            <div class="row justify-content-center" *ngIf="!game.finished">{{game.homeTeam.name}}
+                                - {{game.awayTeam.name}}</div>
 
                             <!--                                            <img-->
                             <!--                                                *ngIf="game"-->
@@ -110,7 +121,6 @@
 
                 </div>
             </div>
-
 
 
         </div>

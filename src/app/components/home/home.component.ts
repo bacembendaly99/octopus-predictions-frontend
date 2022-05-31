@@ -5,6 +5,7 @@ import {element} from 'protractor';
 import {LeagueGroup} from '../../shared/dto/league.interface';
 import {Match} from '../../shared/dto/match.interface';
 import {ActivatedRoute, Router} from '@angular/router';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-home',
@@ -12,6 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+    environmentAPI = environment.API_BASE;
     sports = Array<Sport>();
     leaguesGroups = Array<LeagueGroup>();
     selectedLeagueId = '0';
@@ -47,7 +49,7 @@ export class HomeComponent implements OnInit {
 
     changeLeague(_id: string, name: string) {
         this.selectedLeagueName = name;
-        console.log(this.selectedLeagueName);
+        // console.log(this.selectedLeagueName);
         this.selectedLeagueId = _id;
         this.footballService.getGamesFinishedByLeagueId(_id).subscribe(
             data => {
@@ -60,5 +62,11 @@ export class HomeComponent implements OnInit {
 
     goToGame(_id: string) {
         this.router.navigate(['game', _id]);
+    }
+
+    GoToLeague(_id: string) {
+        // console.log(_id);
+        this.router.navigate(['league', _id]);
+
     }
 }

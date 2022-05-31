@@ -1,7 +1,7 @@
 .favourite-icon {
     margin-bottom: 0.5%;
 }
-.countryFlag {
+.countryFlag1 {
     height: 15px; margin-bottom: 0.3%;
 }
 
@@ -13,4 +13,16 @@
 .games {
     font-weight: bold;
     cursor: pointer;
+
+}
+
+.col-5 {
+    text-align: center;
+}
+
+
+.countryFlag {
+    height: 15px; margin-top: 0.2%;
+    margin-right: 0.2%;
+    margin-left: 0.2%;
 }
