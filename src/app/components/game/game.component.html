@@ -64,6 +64,9 @@
                     <div class="title" *ngIf="predictionFinished">Over 2.5 :
                         <span class="percent">{{predictionOutcome["over 2.5"]*100}}%</span>
                     </div>
+                    <div class="title" *ngIf="predictionFinished">Over 3.5 :
+                        <span class="percent">{{predictionOutcome["over 3.5"]*100}}%</span>
+                    </div>
                     <div class="title" *ngIf="predictionFinished">{{currentHomeTeam.name | titlecase}} or Draw  :
                         <span class="percent">{{predictionOutcome["home_draw"]*100}}%</span>
                     </div>
