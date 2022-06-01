@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" id="all">
     <div class="page-header page-header-xs" data-parallax="true"
          style="background-image: url('./assets/img/Football-background.jpg');">
         <div class="filter"></div>
@@ -9,22 +9,45 @@
                 <div class="avatar">
                     <img *ngIf="currentHomeTeam" src="{{environmentAPI}}football/getLogo/{{currentHomeTeam?.logo}}"
                          alt="Circle Image"
-                         class="img-circle img-no-padding img-responsive">
+                         class="img-circle img-no-padding img-responsive" (click)="GoToTeam(currentHomeTeam._id)">
                 </div>
                 <div class="avatar">
                     <img *ngIf="currentAwayTeam" src="{{environmentAPI}}football/getLogo/{{currentAwayTeam?.logo}}"
                          alt="Circle Image"
-                         class="img-circle img-no-padding img-responsive">
+                         class="img-circle img-no-padding img-responsive" (click)="GoToTeam(currentAwayTeam._id)">
                 </div>
-                <div class="name">
+                <div class="name" *ngIf="!currentMatch.finished">
                     <h4 class="title">
-                        {{currentHomeTeam?.name}} &nbsp; &nbsp; &nbsp; VS &nbsp; &nbsp;
-                        &nbsp; {{currentAwayTeam.name}}</h4>
-<h4>{{currentMatch.season.name}} - {{currentMatch.round}}</h4>
+                        <span (click)="GoToTeam(currentHomeTeam._id)">{{currentHomeTeam?.name | titlecase}}</span>
+                        &nbsp; &nbsp; &nbsp; VS &nbsp; &nbsp;
+                        &nbsp; <span (click)="GoToTeam(currentAwayTeam._id)">{{currentAwayTeam.name | titlecase}}</span>
+                    </h4>
+                    <h4>{{currentMatch.season.name}} - {{currentMatch.round}}</h4>
                     <h4>{{currentMatch.date|date:'short'}}</h4>
                 </div>
+
+                <div class="name" *ngIf="currentMatch.finished">
+                    <h4 class="title">
+                        <span (click)="GoToTeam(currentHomeTeam._id)">{{currentHomeTeam?.name | titlecase}}</span>
+                        &nbsp; &nbsp;
+                        &nbsp;{{footballService.calculateScoreByMatch(currentMatch, currentHomeTeam).score}}&nbsp;
+                        &nbsp;
+                        &nbsp; <span (click)="GoToTeam(currentAwayTeam._id)">{{currentAwayTeam.name | titlecase}}</span>
+                    </h4>
+                    <h4>{{currentMatch.season.name}} - {{currentMatch.round}}</h4>
+                    <h4>{{currentMatch.date|date:'short'}}</h4>
+                </div>
+
                 <br>
                 <hr>
+                <div *ngIf="!currentMatch.finished">
+                    <button type="button" class="btn btn-info btn-round" (click)="predict()"><i class="fa-solid fa-robot"></i> See
+                        Prediction
+                    </button>
+                    <br>
+
+                    <div class="title" *ngIf="predictionFinished && predictionOutcome.result.home">Winner: <span>{{currentMatch.homeTeam.name}}</span></div>
+                </div>
                 <div *ngFor="let goal of currentMatch.goals">
                     <h4 *ngIf="goal.homeTeam" class="homeT"><i class="fa fa-futbol-o"></i> Goal({{goal.time}})</h4>
                     <h4 *ngIf="!goal.homeTeam" class="awayT">Goal({{goal.time}}) <i class="fa fa-futbol-o"></i></h4>

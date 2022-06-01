@@ -5,3 +5,16 @@
 .awayT {
     padding-left: 30%;
 }
+ h4 {
+    font-weight: bold !important;
+}
+
+.img-circle,.title {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.fa-robot {
+    margin-right: 9px;
+}

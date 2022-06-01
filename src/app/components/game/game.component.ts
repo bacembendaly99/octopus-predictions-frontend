@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FootballService} from '../../shared/services/football/football.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Team} from '../../shared/dto/team.interface';
 import {Match} from '../../shared/dto/match.interface';
 import {environment} from '../../../environments/environment';
+import {Prediction} from '../../shared/dto/prediction.interface';
 
 @Component({
     selector: 'app-game',
@@ -15,10 +16,12 @@ export class GameComponent implements OnInit {
     private currentHomeTeam: Team;
     private currentAwayTeam: Team;
     environmentAPI = environment.API_BASE;
+    predictionFinished: false;
+    predictionOutcome: Prediction;
 
 
     constructor(private footballService: FootballService,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -36,7 +39,7 @@ export class GameComponent implements OnInit {
                 },
                 error1 => {
 
-                    console.log(error1);
+                    // console.log(error1);
 
                 }, () => {
                     this.getTeams(this.currentMatch.homeTeam, this.currentMatch.awayTeam);
@@ -60,7 +63,7 @@ export class GameComponent implements OnInit {
                 data => {
                     // console.log(data);
                     this.currentAwayTeam = data;
-                    console.log(this.currentAwayTeam);
+                    // console.log(this.currentAwayTeam);
                 },
                 error1 => {
 
@@ -69,5 +72,18 @@ export class GameComponent implements OnInit {
                 });
 
 
+    }
+
+    GoToTeam(id) {
+        this.router.navigate(['team', id]);
+    }
+
+    predict() {
+        this.footballService.getPrediction().subscribe(
+            data => {
+                this.predictionOutcome = data;
+                console.log(this.predictionOutcome);
+            }
+        )
     }
 }

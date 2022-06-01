@@ -8,5 +8,6 @@ export const environment = {
   API_BASE: 'http://localhost:3500/',
   FRONT_VERSION: '0.0.1',
   DOMAIN: 'localhost:3000',
+  PREDICTION_API : 'http://127.0.0.1:5000',
 };
 

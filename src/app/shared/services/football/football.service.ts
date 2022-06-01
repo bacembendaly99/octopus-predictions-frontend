@@ -7,6 +7,7 @@ import {League, LeagueGroup} from '../../dto/league.interface';
 import {Goal, Match, Score} from '../../dto/match.interface';
 import {Sport} from '../../dto/sport.interface';
 import {filter, map} from 'rxjs/operators';
+import {Prediction} from '../../dto/prediction.interface';
 
 // const FootUrl = 'http://localhost:3000/football/'
 @Injectable({
@@ -97,4 +98,20 @@ export class FootballService {
     getGamesOfLeagueBySeason(id, state) {
         return this.http.get<Array<Match>>(`${environment.API_BASE}football/${id}/matches/${state}`);
     }
+
+
+    getPrediction() {
+        return this.http.post<Prediction>(`${environment.PREDICTION_API}`, {
+            params: {
+                'leagueId': '6250d82b81afe4381753aefa',
+                'homeTeam': 'tunisia',
+                'awayTeam': 'france',
+                'date': '2022-11-30T15:00:00.000Z'
+            }
+        });
+
+    }
 }
+
+
+// leagueId, homeTeamName, awayTeamName, date

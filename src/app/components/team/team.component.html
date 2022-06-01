@@ -19,15 +19,12 @@
                     <h6 class="description"><i class="fa fa-futbol-o"></i>  {{currentTeam?.sport?.name}}  > <img
                             *ngIf="currentTeam"
                             src="{{environmentAPI}}football/getFlag/{{currentTeam?.country.flag}}"
-                            class="countryFlag">  {{currentTeam?.country?.name}}</h6>
+                            class="countryFlag1">  {{currentTeam?.country?.name}}</h6>
                     <br>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate vitae lacus vel
-                        suscipit. Sed malesuada justo augue, sit amet mollis mauris placerat at. Maecenas sit amet purus
-                        eros. Aliquam erat volutpat.</p>
                     <br/>
                     <!--                    <button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Settings</button>-->
                 </div>
@@ -110,8 +107,20 @@
 
                                         <div class="row justify-content-center">{{game.round}}</div>
                                         <div class="row justify-content-center"
-                                             *ngIf="game.finished">{{game.homeTeam.name}} {{footballService.calculateScoreByMatch(game,currentTeam).score}} {{game.awayTeam.name}}</div>
-                                        <div class="row justify-content-center" *ngIf="!game.finished">{{game.homeTeam.name}} - {{game.awayTeam.name}}</div>
+                                             *ngIf="game.finished"><img
+                                                *ngIf="selectedGames"
+                                                src="{{environmentAPI}}football/getLogo/{{game.homeTeam?.logo}}"
+                                                class="countryFlag">{{game.homeTeam.name}} {{footballService.calculateScoreByMatch(game,currentTeam).score}} {{game.awayTeam.name}}<img
+                                                *ngIf="selectedGames"
+                                                src="{{environmentAPI}}football/getLogo/{{game.awayTeam?.logo}}"
+                                                class="countryFlag"></div>
+                                        <div class="row justify-content-center" *ngIf="!game.finished"><img
+                                                *ngIf="selectedGames"
+                                                src="{{environmentAPI}}football/getLogo/{{game.homeTeam?.logo}}"
+                                                class="countryFlag">{{game.homeTeam.name}} - {{game.awayTeam.name}}<img
+                                                *ngIf="selectedGames"
+                                                src="{{environmentAPI}}football/getLogo/{{game.awayTeam?.logo}}"
+                                                class="countryFlag"></div>
 
                                         <!--                                            <img-->
 <!--                                                *ngIf="game"-->

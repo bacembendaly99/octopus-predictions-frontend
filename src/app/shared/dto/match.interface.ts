@@ -11,14 +11,6 @@ export class Match {
     season: Season;
     finished: boolean;
     goals: [Goal];
-    // constructor(id?: string, round?: string, date?: string, homeTeam?: Team, awayTeam?: Team, season?: string, finished?: boolean, goals?: [Goal]) {
-    //     this._id = id || '';
-    //     this.date = date || '';
-    //     this.round = round || '';
-    //     this.homeTeam = homeTeam ;
-    //     this.awayTeam = awayTeam || '';
-    //     this.flagId = flagId || '';
-    // }
 }
 
 
