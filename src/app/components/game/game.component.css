@@ -18,3 +18,14 @@
 .fa-robot {
     margin-right: 9px;
 }
+
+
+.winner {
+    color: #0D9814;
+    margin-left: 7px;
+}
+
+.percent {
+    color: darkblue;
+    margin-left: 7px;
+}

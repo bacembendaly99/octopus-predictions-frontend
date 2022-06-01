@@ -16,7 +16,7 @@ export class GameComponent implements OnInit {
     private currentHomeTeam: Team;
     private currentAwayTeam: Team;
     environmentAPI = environment.API_BASE;
-    predictionFinished: false;
+    predictionFinished = false;
     predictionOutcome: Prediction;
 
 
@@ -34,7 +34,8 @@ export class GameComponent implements OnInit {
             .subscribe(
                 data => {
                     // console.log(data);
-                    this.currentMatch = data
+                    this.currentMatch = data;
+                    console.log(this.currentMatch);
                     // console.log(this.currentMatch);
                 },
                 error1 => {
@@ -78,11 +79,18 @@ export class GameComponent implements OnInit {
         this.router.navigate(['team', id]);
     }
 
-    predict() {
-        this.footballService.getPrediction().subscribe(
+    predict(leagueId, homeTeamName, awayTeamName, date) {
+        console.log(leagueId);
+        console.log(homeTeamName);
+        console.log(awayTeamName);
+        console.log(date);
+        this.footballService.getPrediction(leagueId, homeTeamName, awayTeamName, date).subscribe(
             data => {
                 this.predictionOutcome = data;
                 console.log(this.predictionOutcome);
+            }, error => {
+            }, () => {
+                this.predictionFinished = true;
             }
         )
     }

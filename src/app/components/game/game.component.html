@@ -41,12 +41,20 @@
                 <br>
                 <hr>
                 <div *ngIf="!currentMatch.finished">
-                    <button type="button" class="btn btn-info btn-round" (click)="predict()"><i class="fa-solid fa-robot"></i> See
+                    <button type="button" class="btn btn-info btn-round" (click)="predict(currentMatch.season.league._id,currentHomeTeam.name,currentAwayTeam.name,currentMatch.date)"><i class="fa-solid fa-robot"></i> See
                         Prediction
                     </button>
                     <br>
 
-                    <div class="title" *ngIf="predictionFinished && predictionOutcome.result.home">Winner: <span>{{currentMatch.homeTeam.name}}</span></div>
+                    <div class="title" *ngIf="predictionFinished && predictionOutcome.result.home">Winner: <span class="winner">{{currentHomeTeam.name | titlecase}}</span>
+                    <span class="percent">{{predictionOutcome.result.home*100}}%</span>
+                    </div>
+                    <div class="title" *ngIf="predictionFinished && predictionOutcome.result.draw">Winner: <span class="winner">Draw</span>
+                        <span class="percent">{{predictionOutcome.result.draw*100}}%</span>
+                    </div>
+                    <div class="title" *ngIf="predictionFinished && predictionOutcome.result.away">Winner: <span class="winner">{{currentAwayTeam.name | titlecase}}</span>
+                        <span class="percent">{{predictionOutcome.result.away*100}}%</span>
+                    </div>
                 </div>
                 <div *ngFor="let goal of currentMatch.goals">
                     <h4 *ngIf="goal.homeTeam" class="homeT"><i class="fa fa-futbol-o"></i> Goal({{goal.time}})</h4>

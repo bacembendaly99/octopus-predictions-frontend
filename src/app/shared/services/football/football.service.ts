@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 import {Team} from '../../dto/team.interface';
@@ -100,18 +100,21 @@ export class FootballService {
     }
 
 
-    getPrediction() {
-        return this.http.post<Prediction>(`${environment.PREDICTION_API}`, {
-            params: {
-                'leagueId': '6250d82b81afe4381753aefa',
-                'homeTeam': 'tunisia',
-                'awayTeam': 'france',
-                'date': '2022-11-30T15:00:00.000Z'
-            }
-        });
+    getPrediction(leagueId, homeTeamName, awayTeamName, date) {
+        const options = {headers: {'Content-Type': 'application/json'}};
 
-    }
+        return this.http.post<Prediction>(`${environment.PREDICTION_API}`, JSON.stringify({
+            leagueId: leagueId,
+            homeTeam: homeTeamName,
+            awayTeam: awayTeamName,
+            date: date,
+        }), options)
+
+
+
+
+}
 }
 
 
-// leagueId, homeTeamName, awayTeamName, date
+
