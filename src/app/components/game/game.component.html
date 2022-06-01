@@ -55,6 +55,26 @@
                     <div class="title" *ngIf="predictionFinished && predictionOutcome.result.away">Winner: <span class="winner">{{currentAwayTeam.name | titlecase}}</span>
                         <span class="percent">{{predictionOutcome.result.away*100}}%</span>
                     </div>
+                    <div class="title" *ngIf="predictionFinished">Over 0.5 :
+                        <span class="percent">{{predictionOutcome["over 0.5"]*100}}%</span>
+                    </div>
+                    <div class="title" *ngIf="predictionFinished">Over 1.5 :
+                        <span class="percent">{{predictionOutcome["over 1.5"]*100}}%</span>
+                    </div>
+                    <div class="title" *ngIf="predictionFinished">Over 2.5 :
+                        <span class="percent">{{predictionOutcome["over 2.5"]*100}}%</span>
+                    </div>
+                    <div class="title" *ngIf="predictionFinished">{{currentHomeTeam.name | titlecase}} or Draw  :
+                        <span class="percent">{{predictionOutcome["home_draw"]*100}}%</span>
+                    </div>
+                    <div class="title" *ngIf="predictionFinished">{{currentAwayTeam.name | titlecase}} or Draw  :
+                        <span class="percent">{{predictionOutcome["draw_away"]*100}}%</span>
+                    </div>
+                    <div class="title" *ngIf="predictionFinished">{{currentHomeTeam.name | titlecase}} or {{currentAwayTeam.name | titlecase}}  :
+                        <span class="percent">{{predictionOutcome["home_away"]*100}}%</span>
+                    </div>
+
+
                 </div>
                 <div *ngFor="let goal of currentMatch.goals">
                     <h4 *ngIf="goal.homeTeam" class="homeT"><i class="fa fa-futbol-o"></i> Goal({{goal.time}})</h4>
