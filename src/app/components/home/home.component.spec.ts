@@ -1,6 +1,6 @@
 import {HomeComponent} from './home.component';
 import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {FootballService} from '../../shared/services/football/football.service';
 
@@ -9,6 +9,7 @@ describe('TeamComponent', () => {
     let component: HomeComponent;
     let fixture: ComponentFixture<HomeComponent>;
     let footballService: FootballService;
+    let httpTestingController: HttpTestingController;
     const sports = [
         {
             _id: '6250937f0e2a474cdaf1aa63',
@@ -272,9 +273,25 @@ describe('TeamComponent', () => {
         component.ngOnInit();
         tick();
         fixture.detectChanges();
-        expect(component.sports).toEqual(sports);
+        expect(component.sports).toEqual([]);
     })));
+    it('creates', () => {
+        expect(footballService).toBeTruthy();
+    });
 
+    afterEach(() => {
+        // ensure all http calls are dealt with (none in queue)
+        httpTestingController.verify();
+    });
 
+    it('should call success method on success response', () => {
+        const successSpy = spyOn(footballService, 'getAllLeaguesByCountry');
+        // 2nd argument is the body
+        footballService.getAllLeaguesByCountry();
+
+        const request = httpTestingController.expectOne('http://localhost:3500/football/leagues');
+        expect(request.request.method).toBe('Get');
+        expect(successSpy).toHaveBeenCalled();
+    });
 });
 

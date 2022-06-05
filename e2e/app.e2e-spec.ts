@@ -1,14 +1,41 @@
-import { Pk2AngularCliFreePage } from './app.po';
+import {browser, by, element} from 'protractor';
 
-describe('pk2-angular-cli-free App', () => {
-  let page: Pk2AngularCliFreePage;
+function getWorldCupButton() {
+    const button = element.all(by.css('world-cup'));
+    return button;
+}
 
-  beforeEach(() => {
-    page = new Pk2AngularCliFreePage();
-  });
+function getTitle() {
+    const title = element.all(by.css('title'));
+    return title;
+}
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
-  });
+describe('Protractor Testing', function () {
+
+    beforeAll(() => browser.get('http://localhost:4200/home'));
+
+
+    it('check the page title', function () {
+        browser.driver.getTitle().then(function (pageTitle) {
+            expect(pageTitle).toEqual('Octopus Predictions');
+        });
+    });
+
+
+    it('has world cup button', () => {
+        const button = getWorldCupButton();
+        expect(button.innerHTML).toBe('World Cup');
+
+        expect(button).toBeTruthy();
+    });
+
+    it('redirect to world cup page', () => {
+        const button = getWorldCupButton();
+        button.click();
+        browser.sleep(3000);
+        const title = getTitle();
+        expect(title.innerHTML).toBe('World-cup');
+    });
+
+
 });

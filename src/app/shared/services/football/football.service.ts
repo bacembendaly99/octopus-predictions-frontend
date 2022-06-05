@@ -78,8 +78,6 @@ export class FootballService {
 
     getSports() {
         return this.http.get<Array<Sport>>(`${environment.API_BASE}sports`);
-        // .pipe(
-        // ;
     }
 
     getAllLeaguesByCountry() {
